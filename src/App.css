@@ -1,38 +1,823 @@
-.App {
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  background-color: #850c26;
+  color: #333;
+}
+
+/* Navbar Styles */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.navbar {
+  background: linear-gradient(90deg, rgb(237, 187, 0), rgb(255, 136, 0)); /* Gradient background */
+  color: black;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: 'Poppins', sans-serif; /* Custom font */
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.navbar a:hover {
+  color: #ff4b5c; /* Color change on hover */
+}
+
+.navbar a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ff4b5c; /* Underline color */
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.navbar a:hover::after {
+  width: 100%; /* Underline animation on hover */
+}
+
+.navbar .hello {
+  background-color: #ff4b5c;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.navbar .hello:hover {
+  background-color: #ff1e38;
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 1px; /* Slight letter spacing */
+  color: #fff; /* White color for the title */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar a {
+    margin: 0.5rem 0;
+  }
+
+  .navbar .hello {
+    margin-top: 1rem;
+  }
+}
+
+/* Home Page Styles */
+.home-container {
+  padding: 2rem;
+  max-width: 30%;       /* Set a max-width for the container */
+  margin: 0 auto;
+  margin-bottom: 2rem;           /* Center the container horizontally */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; 
+  background-image: url('./images/barca.jpg'); /* Path relative to App.css */
+  background-size: 100% 100%; /* Ensures the image covers the whole container */
+  background-position: center; /* Centers the image */
+}      /* Optional: Center text content inside the container */
+
+
+/* Create Post Page Styles */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.createPostPage {
+  background-color: #f4f4f9; /* Light background for the entire page */
+  padding: 2rem;
+  max-width: 600px;
+  margin: 3rem auto; /* Center the container with margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px; /* Rounded corners */
+  font-family: 'Poppins', sans-serif; /* Apply the custom font */
+}
+
+.createPostPage h1 {
+  text-align: center;
+  font-size: 2.5rem; /* Increased font size */
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase; /* Uppercase for a stronger visual */
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formField {
+  margin-bottom: 1.5rem; /* Space between form fields */
+}
+
+.formField label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.formField input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px; /* Rounded corners for input */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow */
+  transition: border-color 0.3s ease;
+}
+
+.formField input:focus {
+  border-color: #1c87c9; /* Change border color on focus */
+  outline: none;
+}
+
+.formField button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1c87c9; /* Button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.formField button:hover {
+  background-color: #155a8a; /* Darker button color on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.error-message {
+  color: #ff4b5c; /* Red color for error messages */
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+
+/* Post Page Styles */
+.post-container {
+  padding: 2rem;
+  max-width: 40%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  border-radius: 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; 
+  background-image: url('./images/barca.jpg'); /* Path relative to App.css */
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.title {
+  font-size: 2.5rem; /* Increased font size for title */
+  font-weight: bold; /* Added bold font weight for title */
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.text {
+  font-size: 1rem; /* Decreased font size for post text */
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.username {
+  color: black;
+  margin-bottom: 1rem; /* Highlighted username with blue color */
+}
+
+.comment-input {
+  width: 70%; /* Match the size of input comment text div */
+  padding: 0.5rem; /* Adjust padding for input comment text */
+  margin-right: 0.5rem; /* Add some spacing between input comment text and button */
+}
+
+.comment-button {
+  width: 20%; /* Set smaller width for comment button */
+  padding: 0.5rem; /* Adjust padding for comment button */
+}
+
+
+/* Login/Register Page Styles */
+.formContainer_lr {
+  margin-top: 3rem; /* Add margin between navbar and form container */
+}
+
+.error-message {
+  color: red; /* Set error messages to red color */
+}
+
+.loginContainer,
+.registerContainer {
+  padding: 2rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-top: 3rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved box-shadow for better visual */
+  border-radius: 10px; /* Rounded corners for better aesthetics */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loginContainer input,
+.registerContainer input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem 0; /* Increased margin for better spacing */
+  border: 1px solid #ccc; /* Slightly darker border for better contrast */
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loginContainer button,
+.registerContainer button {
+  background-color: #1c87c9;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 1rem; /* Added margin-top for spacing */
+  font-size: 1rem; /* Increased font size for better readability */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loginContainer button:hover,
+.registerContainer button:hover {
+  background-color: #155a8a;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Added margin-bottom for better spacing */
+}
+
+.label {
+  display: block;
+  font-weight: bold; /* Bold labels for better readability */
+  margin-bottom: 0.5rem; /* Spacing between label and input */
+}
+
+
+/* Profile Page Styles */
+.profile-page-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.basic-info {
+  margin-bottom: 2rem;
+}
+
+.basic-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* General Button Styles */
+button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1c87c9;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #155a8a;
+}
+
+.lol{
+  font-size: 3rem; /* Large font size */
+  text-align: center;
+}
+.lol1{
+ 
+  font-weight: bold; /* Bold text */
+  font-family: 'Arial Black', sans-serif; /* Stylish font */
+  text-shadow: 2px 2px 4px rgba(197, 9, 12, 0.8); /* Add shadow for effect */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.lol2{
+ 
+  font-weight: bold; /* Bold text */
+  font-family: 'Arial Black', sans-serif; /* Stylish font */
+  text-shadow: 2px 2px 4px rgba(219, 0, 48); /* Add shadow for effect */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.lol3{
+ 
+  font-weight: bold; /* Bold text */
+  font-family: 'Arial Black', sans-serif; /* Stylish font */
+  text-shadow: 2px 2px 4px rgba(0, 77, 152); /* Add shadow for effect */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.split {
+  height: 100%; /* Full viewport height */
+  background: linear-gradient(to right, rgb(50, 50, 236) 50%, red 50%);
+  border-radius: 20px
+}
+.blinking-div {
+  width: 800px;
+  background-color: rgba(222, 220, 211, 0.8); /* Change to your preferred color */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: all 0.2s ease-in-out; /* Smooth transition for all properties */
+}
+
+/* Blinking effect on hover */
+.blinking-div:hover {
+  animation: blink 1s infinite; /* Infinite blinking animation */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; } /* Fully visible at the start and end */
+  20% { opacity: 0.8; } /* Half visible at midpoint */
+}
+ul {
+  list-style-type: none;
+  padding: 0; /* Optional: Removes the default padding */
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem; /* Add spacing between each field */
+  width: 100%;
+  max-width: 500px; /* Optional: limit the width of the form */
+  margin-top: 3rem;
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.error-me
+
+.formField {
+  width: 100%;
+}
+
+.formField label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.formField span {
+  display: block;
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.formField input {
+  width: 80%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formField button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formField button:hover {
+  background-color: #0056b3;
+}
+
+.profile-container{
+  padding: 2rem;
+  max-width: 60%;       /* Set a max-width for the container */
+  margin: 0 auto; 
+  margin-top: 2rem;          /* Center the container horizontally */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; 
+  border-radius: 5%;
+}
+
+.input-size {
+  width: 70%;
+  margin: 0 auto; /* Centers the input field horizontally */
+  text-align: center; /* Centers the text inside the input field */
+}
+
+.comment-top{
+  margin-top: 0rem;
+}
+
+.comment-border{
+  margin-top: -1rem;
+  margin-bottom:  -1rem;
+}
+
+.comment-up{
+  margin-top: 3rem;
+}
+
+.lr_1 {
+  padding: 2rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-top: 3rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved box-shadow for better visual */
+  border-radius: 10px; /* Rounded corners for better aesthetics */
+  text-align: center;
+}
+
+.lr_2 input,
+.lr_3 input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem 0; /* Increased margin for better spacing */
+  border: 1px solid #ccc; /* Slightly darker border for better contrast */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.lr_2 button,
+.lr_3 button {
+  background-color: #1c87c9;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 1rem; /* Added margin-top for spacing */
+  font-size: 1rem; /* Increased font size for better readability */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.lr_2 button:hover,
+.lr_3 button:hover {
+  background-color: #155a8a;
+}
+
+.lr_4 {
+  margin-bottom: 1.5rem; /* Added margin-bottom for better spacing */
+}
+
+.lr_label {
+  display: block;
+  font-weight: bold; /* Bold labels for better readability */
+  margin-bottom: 0.5rem; /* Spacing between label and input */
+}
+
+.lr_5 {
+  color: red; /* Set error messages to red color */
+  margin-bottom: 0.5rem; /* Spacing for error messages */
+}
+
+/* Import a custom Google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.helloji_1, .helloji_2, .helloji_3 {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* H1 specific styles */
+.helloji_1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #FF512F, #DD2476);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+  border-bottom: 3px solid #FF512F; /* Underline effect */
+}
+
+/* H2 specific styles */
+.helloji_2 {
+  font-size: 2.5rem;
+  color: #1c87c9;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in animation */
+}
+
+/* H3 specific styles */
+.helloji_3 {
+  font-size: 2rem;
+  color: #555;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  animation: fadeIn 2s ease-in-out; /* Fade-in animation */
+}
+
+/* Hover effects */
+.helloji_1:hover, .helloji_2:hover, .helloji_3:hover {
+  transform: scale(1.1);
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Import a custom Google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.helloji {
+  font-family: 'Poppins', sans-serif; /* Apply custom font */
+  font-size: 4rem; /* Large font size */
+  text-align: center; /* Center align text */
+  color: transparent; /* Text color transparent for gradient effect */
+  background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Gradient background */
+  -webkit-background-clip: text; /* Clip background to text */
+  background-clip: text;
+  margin: 2rem 0; /* Margin to separate from other elements */
+  padding: 1rem; /* Padding for space inside the element */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+  border-bottom: 5px solid #ff7e5f; /* Underline with gradient color */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+.helloji:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content {
+    flex: 1; /* Grow to fill the available space */
+    padding: 2rem; /* Padding for content */
+}
+
+.footer {
+    background-color: #1c1c1c; /* Dark background color */
+    color: #fff; /* White text color */
+    padding: 1rem 0; /* Padding for top and bottom */
+    text-align: center; /* Center the text */
+}
+
+.footer-content {
+    max-width: 1200px; /* Maximum width for content */
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Font size */
+    font-weight: 400; /* Font weight */
+}
+
+.footer p:hover {
+    color: #1c87c9; /* Change color on hover */
+}
+
+.comments {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+}
+
+.comment-content {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+}
+
+.split {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.lol {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.lol1, .lol2, .lol3 {
+  display: inline-block;
+  font-size: 3rem;
+}
+
+.home-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px 0;
+  padding: 20px;
+  border: 1px solid #070606;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.home-container:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #000000;
+}
+
+.footer-content {
+  font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
+  .lol1, .lol2, .lol3 {
+      font-size: 1.5em;
   }
-  to {
-    transform: rotate(360deg);
+
+  .home-container {
+      padding: 15px;
   }
+}
+
+@media (max-width: 480px) {
+  .lol1, .lol2, .lol3 {
+      font-size: 1.2em;
+  }
+
+  .home-container {
+      padding: 10px;
+  }
+
+  .footer-content {
+      font-size: 0.7em;
+  }
+}
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.postPage {
+  width: 80%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.title, .text {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+
+.username {
+  margin-bottom: 20px;
+}
+
+.comment-up {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.comment-top {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-border {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word;
+}
+
+.input-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.comment-input {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .title, .text {
+      font-size: 1.2em;
+  }
+
+  .comment-input {
+      font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .title, .text {
+      font-size: 1em;
+  }
+
+  .comment-input {
+      font-size: 0.8em;
+  }
+
+  .comment-border {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}
+
+.lol span {
+  display: inline-block;
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+.lol span:last-child {
+  margin-right: 0; /* Remove margin from the last element */
 }
